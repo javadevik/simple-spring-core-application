@@ -1,6 +1,5 @@
 package com.ua;
 
-import com.ua.model.ClassicalMusic;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringApplication {
@@ -9,16 +8,8 @@ public class SpringApplication {
                 "applicationContext.xml"
         );
 
-        ClassicalMusic classicalMusic = context.getBean("classicalMusic", ClassicalMusic.class);
-        System.out.println(classicalMusic.getSong());
-
-        /*MusicPlayer firstPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-        MusicPlayer secondPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-
-        firstPlayer.setVolume(100);
-
-        firstPlayer.play();
-        secondPlayer.play();*/
+        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+        musicPlayer.play();
 
         context.close();
 

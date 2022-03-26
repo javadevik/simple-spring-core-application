@@ -8,8 +8,8 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
-
-    <bean id="classicalMusic"
+    <context:component-scan base-package="com.ua"/>
+    <!--<bean id="classicalMusic"
           class="com.ua.model.ClassicalMusic"
           init-method="init"
           destroy-method="destroy"
@@ -34,5 +34,5 @@
         </property>
         <property name="name" value="${musicPlayer.name}"/>
         <property name="volume" value="${musicPlayer.volume}"/>
-    </bean>
+    </bean>-->
 </beans>

@@ -1,25 +1,25 @@
 package com.ua;
 
+import com.ua.model.ClassicalMusic;
 import com.ua.model.Music;
+import com.ua.model.PopMusic;
+import com.ua.model.RockMusic;
+import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class MusicPlayer {
-    private List<Music> musics;
+    private final List<Music> musics = new ArrayList<>();
 
-    private String name;
-    private int volume;
+    private String name = "New musical player";
+    private int volume = 60;
 
-    public void setMusics(List<Music> musics) {
-        this.musics = musics;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
+    public MusicPlayer(ClassicalMusic classicalMusic, PopMusic popMusic, RockMusic rockMusic) {
+        musics.add(classicalMusic);
+        musics.add(popMusic);
+        musics.add(rockMusic);
     }
 
     public void play() {
