@@ -2,6 +2,8 @@ package com.ua.model;
 
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -18,10 +20,12 @@ public class ClassicalMusic implements Music {
         songs.add("«Аве Мария», Франц Шуберт");
     }
 
+    @PostConstruct
     public void init() {
         System.out.println("Do my init method");
     }
 
+    @PreDestroy
     public void destroy() {
         System.out.println("Do my destroy method");
     }

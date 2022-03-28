@@ -4,17 +4,21 @@ import com.ua.model.Genre;
 import com.ua.model.Music;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope("prototype")
 public class MusicPlayer {
 
     private Music classicalMusic;
     private Music rockMusic;
     private Music popMusic;
-
-    private String name = "New musical player";
-    private int volume = 60;
+    @Value("${musicPlayer.name}")
+    private String name;
+    @Value("${musicPlayer.volume}")
+    private int volume;
 
     @Autowired
     public MusicPlayer(@Qualifier("classicalMusic") Music classicalMusic,
@@ -26,7 +30,7 @@ public class MusicPlayer {
     }
 
     public void play(Genre genre) {
-        System.out.println("======" + name + "======");
+        System.out.println("======" + name + "======\nVolume: " + volume);
         if (genre.equals(Genre.CLASSICAL))
             System.out.println("Playing classical: " + classicalMusic.getSong());
         else if (genre.equals(Genre.ROCK))
