@@ -1,5 +1,6 @@
 package com.ua;
 
+import com.ua.model.Genre;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class SpringApplication {
@@ -9,7 +10,7 @@ public class SpringApplication {
         );
 
         MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-        musicPlayer.play();
+        musicPlayer.play(Genre.CLASSICAL);
 
         context.close();
 

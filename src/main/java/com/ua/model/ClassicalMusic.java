@@ -2,13 +2,20 @@ package com.ua.model;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 @Component
 public class ClassicalMusic implements Music {
 
-    public ClassicalMusic(){}
+    private final List<String> songs;
 
-    public static ClassicalMusic getClassicalMusic() {
-        return new ClassicalMusic();
+    public ClassicalMusic(){
+        songs = new ArrayList<>();
+        songs.add("«К Элизе», Людвиг ван Бетховен");
+        songs.add("«Турецкое рондо», Вольфганг Амадей Моцарт");
+        songs.add("«Аве Мария», Франц Шуберт");
     }
 
     public void init() {
@@ -21,6 +28,7 @@ public class ClassicalMusic implements Music {
 
     @Override
     public String getSong() {
-        return "Hungarian rhapsody";
+        Random random = new Random();
+        return songs.get(random.nextInt(songs.size()));
     }
 }
