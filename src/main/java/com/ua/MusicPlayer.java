@@ -2,8 +2,13 @@ package com.ua;
 
 import com.ua.model.Genre;
 import com.ua.model.Music;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Component
+@Scope("prototype")
 public class MusicPlayer {
 
     private Music classicalMusic;
@@ -14,7 +19,9 @@ public class MusicPlayer {
     @Value("${musicPlayer.volume}")
     private int volume;
 
-    public MusicPlayer(Music classicalMusic, Music rockMusic, Music popMusic) {
+    public MusicPlayer(@Qualifier("classicalMusic") Music classicalMusic,
+                       @Qualifier("rockMusic") Music rockMusic,
+                       @Qualifier("popMusic") Music popMusic) {
         this.classicalMusic = classicalMusic;
         this.rockMusic = rockMusic;
         this.popMusic = popMusic;
